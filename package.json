@@ -1,0 +1,27 @@
+{
+  "name": "CsvToL10nJson",
+  "version": "0.1.0",
+  "description": "Convert a proper CSV file to separate I18N enabled JSON files",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "test": "node_modules/.bin/mocha --reporter spec",
+    "release": "node_modules/.bin/release-it"
+  },
+  "author": "Edoardo Tenani",
+  "license": "MIT",
+  "dependencies": {
+    "csv-parse": "^0.1.0",
+    "custom-error": "^0.2.1",
+    "fs-extra": "^0.18.0",
+    "lodash": "^3.6.0",
+    "q": "^1.2.0"
+  },
+  "devDependencies": {
+    "chai": "^2.2.0",
+    "chai-as-promised": "^4.3.0",
+    "mocha": "^2.2.4",
+    "mocha-jshint": "^1.0.0",
+    "release-it": "0.0.15"
+  }
+}
