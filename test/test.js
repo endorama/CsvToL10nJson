@@ -8,6 +8,7 @@ var fse  = require('fs-extra');
 
 chai.should();
 chai.use(require('chai-as-promised'));
+chai.use(require('chai-string'));
 
 var csv2json = require('../index');
 var errors   = require('../lib/errors');
