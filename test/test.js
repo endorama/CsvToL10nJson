@@ -5,6 +5,7 @@ var _    = require('lodash');
 var chai = require('chai');
 var fs   = require('fs');
 var fse  = require('fs-extra');
+var path = require('path');
 
 chai.should();
 chai.use(require('chai-as-promised'));
@@ -15,8 +16,9 @@ var errors   = require('../lib/errors');
 
 describe('CsvToL10nJson', function() {
 
-  var testFile  = __dirname + '/fixtures/test.csv';
-  var outFolder = '/tmp/csv2json';
+  var testFilename = 'test';
+  var testFile     = __dirname + '/fixtures/' + testFilename + '.csv';
+  var outFolder    = '/tmp/csv2json';
 
   beforeEach(function (){
     fse.removeSync(outFolder);
@@ -62,6 +64,15 @@ describe('CsvToL10nJson', function() {
       files.should.have.all.keys(['en', 'it']);
       (fs.existsSync(files.en)).should.be.equal(true);
       (fs.existsSync(files.it)).should.be.equal(true);
+    });
+  });
+
+  it('should prefix files with source file name', function () {
+    return csv2json(testFile, outFolder).then(function (files) {
+      files.should.have.all.keys(['en', 'it']);
+
+      path.basename(files.en, '.csv').should.startWith(testFilename + '-');
+      path.basename(files.it, '.csv').should.startWith(testFilename + '-');
     });
   });
   

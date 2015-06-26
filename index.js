@@ -31,6 +31,8 @@ module.exports = function (inputFile, outputFolder) {
     var l10nFiles = {};
     // get content from input file
     var csvContent = fs.readFileSync(inputFile);
+    // get prefix to apply to output files
+    var filePrefix = path.basename(inputFile, '.csv') + '-';
 
     // parse csv
     csvParse(csvContent, function (err, output) {
@@ -70,7 +72,7 @@ module.exports = function (inputFile, outputFolder) {
 
       // save language file to destination and check for errors
       _.each(languages, function (l, k) {
-        var l10nFilename = path.join(outputFolder, k+'.json');
+        var l10nFilename = path.join(outputFolder, filePrefix+k+'.json');
         fse.writeJsonSync(l10nFilename, l10n[k]);
         if (!fs.existsSync(l10nFilename)) {
           return reject(new Error(l10nFilename+' cannot be created'));
