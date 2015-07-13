@@ -9,7 +9,14 @@ var Q        = require('q');
 
 var errors   = require('./lib/errors');
 
-module.exports = function (inputFile, outputFolder) {
+var defaults = {
+  usePrefix: true,
+};
+
+module.exports = function (inputFile, outputFolder, options) {
+
+  options = _.assign({}, defaults, options);
+
   return Q.promise(function (resolve, reject) {
     if (_.isEmpty(inputFile)) {
       return reject(new TypeError('%s cannot be undefined', 'inputFile'));
@@ -32,7 +39,10 @@ module.exports = function (inputFile, outputFolder) {
     // get content from input file
     var csvContent = fs.readFileSync(inputFile);
     // get prefix to apply to output files
-    var filePrefix = path.basename(inputFile, '.csv') + '-';
+    var filePrefix = '';
+    if (options.usePrefix) {
+      filePrefix = path.basename(inputFile, '.csv') + '-';
+    }
 
     // parse csv
     csvParse(csvContent, function (err, output) {

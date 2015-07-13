@@ -83,4 +83,16 @@ describe('CsvToL10nJson', function() {
     });
   });
 
+  it('should respect usePrefix option', function () {
+
+    return csv2json(testFile, outFolder, { usePrefix: false }).then(function (files) {
+      files.should.have.all.keys(['en', 'it']);
+
+      path.basename(files.en, '.csv').should.equal('en.json');
+      path.basename(files.it, '.csv').should.equal('it.json');
+    });
+
+
+  });
+
 });
