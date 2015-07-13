@@ -1,6 +1,6 @@
 {
   "name": "CsvToL10nJson",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Convert a proper CSV file to separate I18N enabled JSON files",
   "main": "index.js",
   "private": true,
