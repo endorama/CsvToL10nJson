@@ -14,7 +14,7 @@
     "csv-parse": "^0.1.0",
     "custom-error": "^0.2.1",
     "fs-extra": "^0.18.0",
-    "lodash": "^3.6.0",
+    "lodash": "^4.17.15",
     "q": "^1.2.0"
   },
   "devDependencies": {
