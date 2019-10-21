@@ -1,3 +1,11 @@
+# Archive project with security advisory in dependencies
+
+This project has not been used for a long time and is not currently maintaned.  
+There are 2 security issues in dependecies:
+- csv-parse [CVE-2019-17592](https://nvd.nist.gov/vuln/detail/CVE-2019-17592)
+- lodash [CVE-2019-1010266](https://nvd.nist.gov/vuln/detail/CVE-2019-1010266) [CVE-2019-10744](https://github.com/lodash/lodash/pull/4336) [CVE-2018-16487](https://nvd.nist.gov/vuln/detail/CVE-2018-16487)
+
+
 # CsvToL10nJson
 Convert a performatted CSV file to multiple valid localization files
 
